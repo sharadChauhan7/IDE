@@ -6,6 +6,7 @@ const Problems = React.lazy(()=>import("./pages/Problems"));
 const Courses = React.lazy(()=>import("./pages/Courses"));
 const Leaderboard = React.lazy(()=>import("./pages/Leaderboard"));
 const Tests = React.lazy(()=>import("./pages/Tests"));
+const Playground = React.lazy(()=>import("./pages/Playground"));
 
 import Sidebar from "./components/Sidebar"
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <React.Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/playground' element={<Playground />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/problems' element={<Problems />} />
           <Route path='/courses' element={<Courses />} />
@@ -26,7 +28,6 @@ function App() {
         </React.Suspense>
         </div>
       </Router>
-        
     </>
   )
 }
