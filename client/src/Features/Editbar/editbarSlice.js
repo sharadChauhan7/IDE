@@ -8,7 +8,7 @@ const initialState = {
         theme: 'vs-dark',
         language: 'javascript',
         boilerPlate: `// Javascript code
-        console.log('Hello World');`,
+console.log('Hello World');`,
     }
 }
 

@@ -1,9 +1,17 @@
 import express from 'express';
 import dotenv from 'dotenv';
-
+import playground from './Routes/playground.js';
+import cors from 'cors';
 dotenv.config();
 const app = express();
+const corsOptions={
+    origin:'http://localhost:5173',
+    methods:['GET','POST'],
+    allowedHeaders:['Content-Type']
 
+}
+
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.listen(process.env.PORT || 3000, () => {
@@ -19,3 +27,5 @@ app.post('/',(req,res)=>{
     console.log(req);
     res.send('Post request');
 });
+
+app.use('/playground',playground);
