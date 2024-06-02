@@ -1,8 +1,10 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 function Problems() {
   return (
-    <div>Problems</div>
+    <div>
+      <Link to='/problems/upload'>Upload</Link>
+    </div>
   )
 }
 

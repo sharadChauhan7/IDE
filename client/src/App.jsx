@@ -7,6 +7,7 @@ const Courses = React.lazy(()=>import("./pages/Courses"));
 const Leaderboard = React.lazy(()=>import("./pages/Leaderboard"));
 const Tests = React.lazy(()=>import("./pages/Tests"));
 const Playground = React.lazy(()=>import("./pages/Playground"));
+const UploadForm = React.lazy(()=>import("./pages/UploadForm"));
 
 import Sidebar from "./components/Sidebar"
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path='/courses' element={<Courses />} />
           <Route path='/leaderboard' element={<Leaderboard />} />
           <Route path='/tests' element={<Tests />} />
+          <Route path='/problems/upload' element={<UploadForm />} />
         </Routes>
         </React.Suspense>
         </div>

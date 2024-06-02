@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import playground from './Routes/playground.js';
 import cors from 'cors';
+import Problem from './model/problem.model.js';
 dotenv.config();
 const app = express();
 const corsOptions={
