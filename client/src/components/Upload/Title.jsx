@@ -9,7 +9,7 @@ function Title({problem}) {
     }
   return (
     <Stack justifyContent={"center"} alignItems={"center"}>
-        <TextField id="standard-basic" label="Name" variant="standard" onChange={handleChange}  value={problem.title} sx={{width:"80%"}} />
+        <TextField id="standard-basic" label="Problem Title" variant="standard" onChange={handleChange}  value={problem.title} sx={{width:"80%"}} />
     </Stack>
   )
 }

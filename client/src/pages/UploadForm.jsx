@@ -5,6 +5,11 @@ import { next, prev } from '../Features/ProblemForm/flowSlice.js';
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import Skleton from '../components/skeleton/formskeleton.jsx';
 import axios from 'axios';
+import Title from '../components/Upload/Title.jsx';
+import Description from '../components/Upload/Description.jsx';
+import Dificulty from '../components/Upload/Dificulty.jsx';
+import Constraints from '../components/Upload/Constraints.jsx';
+import Topics from '../components/Upload/Topics.jsx';
 function UploadForm() {
     let idx = useSelector((state) => state.flow.value);
     let problem = useSelector((state) => state.problem);
@@ -18,19 +23,21 @@ function UploadForm() {
             console.log(err);
         }
     }
-    const Title = React.lazy(() => import('../components/Upload/Title.jsx'));
 
     return (
         <>
             <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "90vh" }}>
 
-                <Box>
-                    <Typography align='center' margin={"40px"} variant='h4'>{question[idx]}</Typography>
+                <Box width={"100%"}>
+                    <Typography align='center' margin={"40px"} sx={{fontWeight:"500"}} variant='h2'>{question[idx]}</Typography>
 
                     <Box width={"100%"}>
-                        <React.Suspense fallback={<Skleton/>}>
                             {idx === 0 && <Title problem={problem} />}
-                        </React.Suspense>
+                            {idx === 1 && <Description problem={problem} />}
+                            {idx === 2 && <Constraints problem={problem} />}
+                            {idx === 3 && <Dificulty problem={problem} />}
+                            {idx === 4 && <Topics problem={problem} />}
+
                     </Box>
                     <Stack spacing={12} sx={{ my: "24px" }} direction={"row"} justifyContent={"center"}>
                         <Button size='large' variant='contained' disabled={idx === 0} onClick={() => { dispatch(prev()) }}>Prev</Button>

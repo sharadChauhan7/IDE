@@ -50,8 +50,11 @@ const ProblemSchema = new mongoose.Schema({
 const initialState = {
     title: "",
     description: "",
-    constraints: [],
-    difficulty: ["Easy", "Medium", "Hard"],
+    constraints: {
+        Constraint1: "",
+        Constraint2: "",
+    },
+    difficulty: "Medium",
     topics: [],
     examples: [{
         input: "",
@@ -75,6 +78,7 @@ export const problemSlice = createSlice({
             state.constraints = action.payload;
         },
         setDifficulty: (state, action) => {
+            console.log(action.payload);
             state.difficulty = action.payload;
         },
         setTopics: (state, action) => {
