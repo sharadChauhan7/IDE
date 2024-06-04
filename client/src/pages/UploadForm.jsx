@@ -10,6 +10,7 @@ import Description from '../components/Upload/Description.jsx';
 import Dificulty from '../components/Upload/Dificulty.jsx';
 import Constraints from '../components/Upload/Constraints.jsx';
 import Topics from '../components/Upload/Topics.jsx';
+import Example from '../components/Upload/Example.jsx';
 function UploadForm() {
     let idx = useSelector((state) => state.flow.value);
     let problem = useSelector((state) => state.problem);
@@ -26,7 +27,7 @@ function UploadForm() {
 
     return (
         <>
-            <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "90vh" }}>
+            <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "90vh", overflow:"scroll" }}>
 
                 <Box width={"100%"}>
                     <Typography align='center' margin={"40px"} sx={{fontWeight:"500"}} variant='h2'>{question[idx]}</Typography>
@@ -37,11 +38,12 @@ function UploadForm() {
                             {idx === 2 && <Constraints problem={problem} />}
                             {idx === 3 && <Dificulty problem={problem} />}
                             {idx === 4 && <Topics problem={problem} />}
+                            {idx === 5 && <Example problem={problem} />}
 
                     </Box>
                     <Stack spacing={12} sx={{ my: "24px" }} direction={"row"} justifyContent={"center"}>
                         <Button size='large' variant='contained' disabled={idx === 0} onClick={() => { dispatch(prev()) }}>Prev</Button>
-                        {idx!=8?<Button size='large' sx={{bgcolor:"#C967F5"}} variant='contained' onClick={() => { dispatch(next()) }}>Next</Button>:<Button size='large' variant='contained' onClick={handleSubmit}>Submit</Button>}
+                        {idx!=6?<Button size='large' sx={{bgcolor:"#C967F5"}} variant='contained' onClick={() => { dispatch(next()) }}>Next</Button>:<Button size='large' variant='contained' onClick={handleSubmit}>Submit</Button>}
                     </Stack>
                 </Box>
             </Container>

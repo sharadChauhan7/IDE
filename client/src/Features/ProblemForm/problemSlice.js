@@ -56,11 +56,7 @@ const initialState = {
     },
     difficulty: "Medium",
     topics: [],
-    examples: [{
-        input: "",
-        output: "",
-        explaination: ""
-    }],
+    examples: [{input: "",output: "",explaination: ""},{input:"",output:"",explaination:""}],
     follow_up: "",
 };
 

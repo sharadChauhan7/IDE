@@ -49,13 +49,13 @@ function Playground() {
             <div className='w-1/2 h-full'>
               {/* Style heading */}
               <h1 className='text-2xl h-1/6 text-center text-white rounded-lg bg-[#C967F5] '>Output</h1>
-                <p className=' w-full h-full border-r-4 border-[#C967F5] p-5'>{output}</p>
+                <p className=' w-full h-full  p-5'>{output}</p>
             </div>
             {/* Input */}
             <div className='w-1/2 h-full'>
               {/* Style heading */}
               <h1 className='text-2xl h-1/6 text-center text-white rounded-lg bg-[#C967F5]'>Input</h1>
-                <textarea name="input" id="input" className='w-full h-full border-l-4 border-[#C967F5]'></textarea>
+                <textarea name="input" id="input" className='w-full h-full '></textarea>
             </div>
           </div>
     </div>
