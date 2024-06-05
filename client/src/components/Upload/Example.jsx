@@ -1,54 +1,71 @@
 import React from 'react'
 import { Stack, TextField, Fab } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import {setExamples} from '../../Features/ProblemForm/problemSlice.js';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { nanoid } from '@reduxjs/toolkit';
 
 function Example({ problem }) {
     // To handle multiple constrains we are using an object of constraints
-    let [example, setExample] = React.useState(problem.examples);
-    console.log(example);
+    // let example =problem.examples;
+    let [ex,setEx]= React.useState(problem.examples);
 
     let dispatch = useDispatch();
-
+    
     function addExample(){
-        if(example.length>=5) return;
-        setExample([...example,{input:"",output:"",explaination:""}]);
+        if(ex.length>=3) return;
+        setEx([...ex,{input:"",output:"",explaination:""}]);
+        dispatch(setExamples([...ex,{input:"",output:"",explaination:""}]));
     }
     function removeExample(){
-        if(example.length<=1) return;
-        setExample(example.slice(0,example.length-1));
+        if(ex.length<=2) return;
+        setEx(ex.slice(0,ex.length-1));
+        dispatch(setExamples(ex.slice(0,example.l-1)));
     }
-    // Handle change in constraints
+    // Handle Example form
+    
+    function handleExampleChange(e, index, key) {
+
+        setEx()
+        // dispatch(setExamples(newEx));
+    }
+
     return (
         <>
-        <Stack justifyContent={"center"} gap={"20px"} alignItems={"center"} className=' max-h-full py-5 overflow-y-scroll' >
+        <Stack direction={"row"} justifyContent={"center"} gap={"10px"} alignItems={"center"} className=' py-5 overflow-x-auto' >
             {/* Render Example object */}
-            {example.map((ex, i) => {
+            {ex.map((ex, i) => {
                 return (
-                    <Stack key={i} alignItems={"center"} width={"80%"} className='border-2'  >
+                    <Stack key={nanoid()} id={i} direction={"column"} alignItems={"center"} width={"80%"} className='border-2 p-4'  >
                         {/* Heading example 1*/}
                         <h1 className='text-xl font-medium text-left'>Example {i + 1}</h1>
                         <TextField
-                            id="outlined-basic"
+                            key={`input-${i}`}
+                            id="input"
                             label="Input"
                             variant="outlined"
                             value={ex.input}
                             sx={{width:"100%",margin:"5px 0",border:"none"}}
+                            onChange={(e) => handleExampleChange(e, i, 'input')}
                         />
                         <TextField
-                            id="outlined-basic"
+                        key={`output-${i}`}
+                            id="output"
                             label="Output"
                             variant="outlined"
                             value={ex.output}
                             sx={{width:"100%", margin:"5px 0"}}
+                            onChange={(e) => handleExampleChange(e, i, 'output')}
                         />
                         <TextField
-                            id="outlined-basic"
+                            key={`explanation-${i}`}
+                            id="explaination"
                             label="Explaination"
                             variant="outlined"
                             value={ex.explaination}
                             sx={{width:"100%",margin:"5px 0"}}
+                            onChange={(e) => handleExampleChange(e, i, 'explaination')}
                         />
                     </Stack>
                 )

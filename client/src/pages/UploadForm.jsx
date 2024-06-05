@@ -11,9 +11,12 @@ import Dificulty from '../components/Upload/Dificulty.jsx';
 import Constraints from '../components/Upload/Constraints.jsx';
 import Topics from '../components/Upload/Topics.jsx';
 import Example from '../components/Upload/Example.jsx';
+import Followup from '../components/Upload/Followup.jsx';
+
 function UploadForm() {
-    let idx = useSelector((state) => state.flow.value);
-    let problem = useSelector((state) => state.problem);
+    // let idx = useSelector((state) => state.flow.value);
+    let idx=5;
+    let problem =useSelector((state) => state.problem);
     let dispatch = useDispatch();
 
     const handleSubmit = async () => {
@@ -27,7 +30,7 @@ function UploadForm() {
 
     return (
         <>
-            <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "90vh", overflow:"scroll" }}>
+            <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "90vh" }}>
 
                 <Box width={"100%"}>
                     <Typography align='center' margin={"40px"} sx={{fontWeight:"500"}} variant='h2'>{question[idx]}</Typography>
@@ -39,6 +42,7 @@ function UploadForm() {
                             {idx === 3 && <Dificulty problem={problem} />}
                             {idx === 4 && <Topics problem={problem} />}
                             {idx === 5 && <Example problem={problem} />}
+                            {/* {idx === 6 && <Followup problem={problem} />} */}
 
                     </Box>
                     <Stack spacing={12} sx={{ my: "24px" }} direction={"row"} justifyContent={"center"}>

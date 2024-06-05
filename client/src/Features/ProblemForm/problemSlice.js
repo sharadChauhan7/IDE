@@ -1,53 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-/* Schema
-const ProblemSchema = new mongoose.Schema({
-    title:{
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    constraints:{
-        type:[String],
-        required: true
-    },
-    difficulty: {
-        type: String,
-        required: true,
-        enum:['Easy', 'Medium', 'Hard']
-    },
-    topics: {
-        type: [String],
-        required: true
-    },
-    examples:{
-        type:[{
-            input:{
-                type:String,
-                required:true
-            },
-            output:{
-                type:String,
-                required:true
-            },
-            explaination:{
-                type:String,
-                required:true
-            }
-        }],
-        required: true
-    },
-    follow_up:{
-        type: String,
-        required: true
-    }
-});
- */
-
-const initialState = {
+const initialState = localStorage.getItem('problem') ? JSON.parse(localStorage.getItem('problem')) : {
     title: "",
     description: "",
     constraints: {
@@ -65,25 +17,32 @@ export const problemSlice = createSlice({
     initialState,
     reducers:{
         setTitle: (state, action) => {
+            localStorage.setItem('problem', JSON.stringify(state));
             state.title = action.payload;
         },
         setDescription: (state, action) => {
+            localStorage.setItem('problem', JSON.stringify(state));
             state.description = action.payload;
         },
         setConstraints: (state, action) => {
+            localStorage.setItem('problem', JSON.stringify(state));
             state.constraints = action.payload;
         },
         setDifficulty: (state, action) => {
-            console.log(action.payload);
+            localStorage.setItem('problem', JSON.stringify(state));
             state.difficulty = action.payload;
         },
         setTopics: (state, action) => {
+            localStorage.setItem('problem', JSON.stringify(state));
             state.topics = action.payload;
         },
         setExamples: (state, action) => {
+            localStorage.setItem('problem', JSON.stringify(state));
+            console.log(action.payload);
             state.examples = action.payload;
         },
         setFollowUp: (state, action) => {
+            localStorage.setItem('problem', JSON.stringify(state));
             state.follow_up = action.payload;
         }
     }

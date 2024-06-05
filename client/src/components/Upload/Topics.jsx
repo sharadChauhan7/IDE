@@ -6,9 +6,9 @@ import Autocomplete from '@mui/material/Autocomplete';
 import {topic} from '../../util/problemData.js';
 function Topics({problem}) {
     let dispatch = useDispatch();
-    function handelPrice(e){
-      let tonumber=parseInt(e.target.value);
-        dispatch(setPrice(tonumber));
+
+    const handleTopicsChange = (event, value) => {
+        dispatch(setTopics(value));
     }
   return (
     <Stack justifyContent={"center"} alignItems={"center"}>
@@ -18,14 +18,18 @@ function Topics({problem}) {
         id="tags-standard"
         options={topic}
         getOptionLabel={(option) => option}
-        renderInput={(params) => (
-          <TextField
-            {...params}
+        value={problem.topics}
+        onChange={handleTopicsChange}
+        renderInput={(params) => {
+          const { key, ...other } = params;
+          return (<TextField
+            {...other}
+            key={key}
             variant="standard"
             label="Topics"
             placeholder="Topics"
-          />
-        )}
+          />)
+        }}
       />
     </Stack>
   )
