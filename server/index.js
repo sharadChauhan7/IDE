@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import playground from './Routes/playground.js';
 import cors from 'cors';
-import Problem from './model/problem.model.js';
+import problemRoute from './Routes/problem.route.js'
 dotenv.config();
 const app = express();
 const corsOptions={
@@ -30,3 +30,4 @@ app.post('/',(req,res)=>{
 });
 
 app.use('/playground',playground);
+app.use('/problem',problemRoute);
